@@ -117,17 +117,25 @@
         <input type="text" th:field="*{lastname}" class="form-control" id="exampleInputPassword1">
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Last Name</label>
+    <label for="age" class="form-label">age</label>
+    <input type="text" th:field="*{age}" class="form-control" id="age">
+</div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">email</label>
         <input type="text" th:field="*{email}" class="form-control" id="email">
     </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">password</label>
+        <input type="password" th:field="*{password}" class="form-control" id="password">
+    </div>
     <div>
-        <button class="custom-btn btn-6"><span><input type = "radio" value="USER" th:field="*{roleName}"
+        <button class="custom-btn btn-6"><span><input type = "radio" th:value="USER" th:field="*{roleName}"
                                                       id="USER">
         <label for="USER">USER</label></span></button>
-        <button class="custom-btn btn-6"><span><input type = "radio" value="ADMIN" th:field="*{roleName}"
+        <button class="custom-btn btn-6"><span><input type = "radio" th:value="ADMIN" th:field="*{roleName}"
                                                       id="ADMIN">
         <label for="ADMIN">ADMIN</label></span></button>
-        <button class="custom-btn btn-6"><span><input type = "radio" value="INSTRUCTOR" th:field="*{roleName}"
+        <button class="custom-btn btn-6"><span><input type = "radio" th:value="INSTRUCTOR" th:field="*{roleName}"
                                                       id="INSTRUCTOR">
         <label for="INSTRUCTOR">INSTRUCTOR</label></span></button>
     </div>

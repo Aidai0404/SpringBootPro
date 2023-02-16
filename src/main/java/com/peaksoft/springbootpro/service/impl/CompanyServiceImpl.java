@@ -12,12 +12,11 @@ import java.util.List;
 @Service
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
-    private final CourseRepository courseRepository;
+//    private final CourseRepository courseRepository;
 
-    public CompanyServiceImpl(CompanyRepository companyRepository,
-                              CourseRepository courseRepository) {
+    public CompanyServiceImpl(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
-        this.courseRepository = courseRepository;
+//        this.courseRepository = courseRepository;
     }
 
     @Override

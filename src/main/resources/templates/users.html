@@ -116,6 +116,7 @@
         <th scope="col">User's name</th>
         <th scope="col">Last Name</th>
         <th scope="col"> Email</th>
+        <th scope="col"> Age </th>
         <th scope="col"> Role Name</th>
         <th scope="col">Update</th>
         <th scope="col">delete</th>
@@ -127,16 +128,20 @@
         <td th:text="${user.username}"></td>
         <td th:text="${user.lastname}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.getRoleName()}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.roles}"></td>
         <td><a th:href="@{/users/update/{id}(id=${user.id})}"><button class="custom-btn btn-6"><span>update</span></button></a></td>
         <td>
-            <form th:method="GET" th:action="@{/users/delete/{id}(id=${user.getId()})}"
+            <form th:method="GET" th:action="@{/users/delete/{id}(id=${user.getId()})}" sec:authorize="hasAuthority('ADMIN')"
             ><button class="custom-btn btn-6"><span>Delete</span></button></form></td>
     </tr>
     </tbody>
 <!--    <button href="/saveUser" value="ADD" sec:authorize="hasAuthority('ADMIN')"></button>-->
 <!--    <a th:href="@{/users/saveUser}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>add</span></button></font></a>-->
 </table>
+
 <a  href="/users/saveUser" ><button class="custom-btn btn-6"><span>add</span></button></a>
+<a href="/"><button class="custom-btn btn-6"><span>go back</span></button></a>
+
 </body>
 </html>

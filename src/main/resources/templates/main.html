@@ -173,34 +173,135 @@
   }
   .btn4:hover::before{
     height: 980%;
+  }
+</style>
+  <style>html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    background: #162944;
+  }
+
+  .button_slide {
+    color: #FFF;
+    border: 2px solid rgb(216, 2, 134);
+    border-radius: 0px;
+    padding: 18px 36px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #D80286;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+  }
+
+  .slide_down:hover {
+    box-shadow: inset 0 100px 0 0 #D80286;
+  }
+
+  .slide_right:hover {
+    box-shadow: inset 400px 0 0 0 #D80286;
+  }
+
+  .slide_left:hover {
+    box-shadow: inset 0 0 0 50px #D80286;
+  }
+
+  .slide_diagonal:hover {
+    box-shadow: inset 400px 50px 0 0 #D80286;
+  }
+
+  #outer {
+    width: 364px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+  }
+  </style>
+  <style>.aidai-btn {
+    width: 130px;
+    height: 65px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+  .btn-16 {
+    border: none;
+    color: #ff7675;
+    z-index: 6;
+  }
+  .btn-16:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+            -7px -7px 20px 0px #fff9,
+            -4px -4px 5px 0px #fff9,
+            7px 7px 20px 0px #0002,
+            4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+  }
+  .btn-16:hover {
+    color: rgba(118,174,241,1);
+  }
+  .btn-16:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+  }
+  .btn-16:active {
+    top: 2px;
   }</style>
-
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
 </head>
 <body style="background:  rgb(247,150,192);
     background: radial-gradient(circle, rgba(247,150,192,1) 0%, rgba(118,174,241,1) 100%);
     line-height: 42px;
     padding: 0;
     border: none">
+<header style="background: rgba(118,174,241,1)">
 <div class="header" role="heading">
-  <a th:href="@{/companies}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="10"><button class="custom-btn btn-6"><span>Companies</span></button></font></a>
-  <a th:href="@{/courses}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>Courses</span></button></font></a>
-  <a th:href="@{/groups}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>Groups</span></button></font></a>
-  <a th:href="@{/students}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>Students</span></button></font></a>
-  <a th:href="@{/teachers}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="10"><button class="custom-btn btn-6"><span>Teachers</span></button></font></a>
-  <br>
-  <br>  </div>
+  <a th:href="@{/companies}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>Companies</span></button></font></a>
+  <a th:href="@{/courses}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="10"><button class="custom-btn btn-6"><span>Courses</span></button></font></a>
+  <a th:href="@{/groups}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="10"><button class="custom-btn btn-6"><span>Groups</span></button></font></a>
+  <a th:href="@{/students}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="10"><button class="custom-btn btn-6"><span>Students</span></button></font></a>
+  <a th:href="@{/teachers}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>Teachers</span></button></font></a>
+</div>
+</header>
 
 <div class="middle">
-  <a href="https://peaksoft.house/" class="btn btn4">PEAKSOFT</a>
+  <a href="https://peaksoft.house/" class="btn btn4" >PEAKSOFT</a>
+  <br><br>
+  <a th:href="@{/users/users}" sec:authorize="hasAuthority('ADMIN')"  class="aidai-btn btn-16">Users</a>
+  <a th:href="@{/users/profile}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR','USER')"  class="aidai-btn btn-16">Profile</a>
+  <a href="/logout"  class="aidai-btn btn-16">log out</a>
+</div>
 
-</div>
-<div class="footer">
-<a th:href="@{/users/users}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>Users</span></button></font></a>
-<a th:href="@{/users/profile}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR','USER')"><font th:size="10"><button class="custom-btn btn-6"><span> My profile </span></button></font></a>
-</div>
-</button>
+
+<!--<a th:href="@{/users/users}" sec:authorize="hasAuthority('ADMIN')"><font th:size="10"><button class="custom-btn btn-6"><span>Users</span></button></font></a>-->
+<!--<a th:href="@{/users/profile}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR','USER')"><font th:size="10"><button class="custom-btn btn-6"><span> My profile </span></button></font></a>-->
+<!--  <a href="/logout"><button class="custom-btn btn-6"><font th:size="10"><span>log out</span></font></button></a>-->
+
+
 </body>
 </html>

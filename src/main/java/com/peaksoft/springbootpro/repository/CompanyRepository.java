@@ -18,4 +18,5 @@ public interface CompanyRepository extends JpaRepository<Company,Long> {
     @Query("select s from Student s join " +
             " s.group g join g.course c join c.company com where com.id= :id")
     List<Student>getStudentsByCompanyId(@Param("id") Long id);
+
 }

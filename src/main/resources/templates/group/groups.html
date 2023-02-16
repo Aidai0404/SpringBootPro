@@ -111,11 +111,11 @@
     border: none">
 <header>
     <div class="header" role="heading">
-        <a th:href="@{companies}"><font th:size="5"><button class="custom-btn btn-6"><span>Companies</span></button></font></a>
-        <a th:href="@{courses}"><font th:size="5"><button class="custom-btn btn-6"><span>Courses</span></button></font></a>
-        <a th:href="@{groups}"><font th:size="5"><button class="custom-btn btn-6"><span>Groups</span></button></font></a>
-        <a th:href="@{students}"><font th:size="5"><button class="custom-btn btn-6"><span>Students</span></button></font></a>
-        <a th:href="@{teachers}"><font th:size="5"><button class="custom-btn btn-6"><span>Teachers</span></button></font></a>
+        <a th:href="@{companies}" sec:authorize="hasAuthority('ADMIN')"><font th:size="5"><button class="custom-btn btn-6"><span>Companies</span></button></font></a>
+        <a th:href="@{courses}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="5"><button class="custom-btn btn-6"><span>Courses</span></button></font></a>
+        <a th:href="@{groups}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="5"><button class="custom-btn btn-6"><span>Groups</span></button></font></a>
+        <a th:href="@{students}" sec:authorize="hasAnyAuthority('ADMIN','INSTRUCTOR')"><font th:size="5"><button class="custom-btn btn-6"><span>Students</span></button></font></a>
+        <a th:href="@{teachers}" sec:authorize="hasAuthority('ADMIN')"><font th:size="5"><button class="custom-btn btn-6"><span>Teachers</span></button></font></a>
         <br>
         <br>
         <h1 style="color: white" align="center">Programming courses<br>Peaksoft</h1>
@@ -143,12 +143,14 @@
         <td><a th:href="@{/groups/courses/{id}(id=${group.id})}"><button class="custom-btn btn-6"><span>Courses</span></button></a> </td>
         <td><a th:href="@{/groups/students/{id}(id=${group.id})}"><button class="custom-btn btn-6"><span>Students</span></button></a> </td>
         <td><a th:href="@{/groups/update/{id}(id=${group.id})}"><button class="custom-btn btn-6"><span>update</span></button></a></td>
-       <td> <form th:method="GET" th:action="@{/groups/delete/{id}(id=${group.getId()})}"
+       <td> <form th:method="GET" th:action="@{/groups/delete/{id}(id=${group.getId()})}" sec:authorize="hasAuthority('ADMIN')"
         ><button class="custom-btn btn-6"><span>Delete</span></button></form></td>
     </tr>
     </tbody>
 </table>
-<a  href="/groups/addGroup" ><button class="custom-btn btn-6"><span>add</span></button></a>
+<a  href="/groups/addGroup" sec:authorize="hasAuthority('ADMIN')"><button class="custom-btn btn-6"><span>add</span></button></a>
 <a href="/" ><button class="custom-btn btn-6"><span>go back</span></button></a>
+<br><br><br>
+<a href="/logout"><button class="custom-btn btn-6"><span>log out</span></button></a>
 </body>
 </html>

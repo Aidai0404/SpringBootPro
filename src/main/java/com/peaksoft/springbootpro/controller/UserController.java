@@ -52,10 +52,10 @@ public class UserController {
         return "updateUser";
     }
 
-    @RequestMapping(value = "/{id}", method= {RequestMethod.PATCH, RequestMethod.GET})
+    @RequestMapping(value = "/{id}", method = {RequestMethod.PATCH, RequestMethod.GET})
     public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") User user){
-        userRepository.saveAndFlush(user);
-//        userService.update(id,user,user.getRoleName());
+        //userRepository.saveAndFlush(user);
+       userService.update(id,user,user.getRoleName());
         return "redirect:users";
     }
 

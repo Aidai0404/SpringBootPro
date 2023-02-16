@@ -50,21 +50,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users").hasAuthority("ADMIN")
                 .antMatchers("/users/save").hasAnyAuthority("ADMIN")
                 .antMatchers("/users/saveUser").hasAuthority("ADMIN")
-                .antMatchers("/users/profile").hasAnyAuthority("ADMIN","INSTRUCTOR")
+                .antMatchers("/users/profile").hasAnyAuthority("ADMIN","INSTRUCTOR","USER")
                 .antMatchers("/companies/**").hasAuthority("ADMIN")
                 .antMatchers("/courses").hasAnyAuthority("ADMIN","INSTRUCTOR")
-                .antMatchers("/courses/delete").hasAuthority("ADMIN")
+                .antMatchers("/courses/delete/{id}").hasAuthority("ADMIN")
+                .antMatchers("/courses/addCourse").hasAuthority("ADMIN")
                 .antMatchers("/groups").hasAnyAuthority("ADMIN","INSTRUCTOR")
-                .antMatchers("/groups/delete").hasAuthority("ADMIN")
+                .antMatchers("/groups/delete/{id}").hasAuthority("ADMIN")
+                .antMatchers("/groups/addGroup").hasAuthority("ADMIN")
                 .antMatchers("/students").hasAnyAuthority("ADMIN","INSTRUCTOR")
                 .antMatchers("/students/addStudent").hasAuthority("ADMIN")
-                .antMatchers("/students/updateStudent").hasAuthority("ADMIN")
+                .antMatchers("/students/update/{id}").hasAuthority("ADMIN")
+                .antMatchers("/students/delete/{id}").hasAuthority("ADMIN")
                 .antMatchers("/teachers/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated().and()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/login").permitAll();
 //                .and().csrf(csrf -> csrf
 //                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-        ;
+
 
     }
 }

@@ -113,12 +113,16 @@
       th:method="post"
       th:object="${user}">
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Student's name</label>
+        <label for="exampleInputEmail1" class="form-label">User's name</label>
         <input type="text" th:field="*{username}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-        <label for="lastName" class="form-label">Student's last name</label>
+        <label for="lastName" class="form-label">User's last name</label>
         <input type="text" th:field="*{lastname}" class="form-control" id="lastName">
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">age</label>
+        <input type="text" th:field="*{age}" class="form-control" id="age">
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">email</label>
@@ -129,13 +133,13 @@
         <input type="text" th:field="*{password}" class="form-control" id="password">
     </div>
     <div class="custom-btn btn-6">
-        <input type = "radio" value="USER" th:field="*{roleName}"
+        <input type = "radio" th:value="USER" th:field="*{roleName}"
                id="USER">
         <label for="USER">USER</label>
-        <input type = "radio" value="ADMIN" th:field="*{roleName}"
+        <input type = "radio" th:value="ADMIN" th:field="*{roleName}"
                id="ADMIN">
         <label for="ADMIN">ADMIN</label>
-        <input type = "radio" value="INSTRUCTOR" th:field="*{roleName}"
+        <input type = "radio" th:value="INSTRUCTOR" th:field="*{roleName}"
                id="INSTRUCTOR">
         <label for="INSTRUCTOR">INSTRUCTOR</label>
     </div>

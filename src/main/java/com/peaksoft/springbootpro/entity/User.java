@@ -20,6 +20,8 @@ public class User {
     Long id;
     String username;
     String lastname;
+    @Column(name = "user_age")
+    int age;
     String email;
     private String password;
     @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
